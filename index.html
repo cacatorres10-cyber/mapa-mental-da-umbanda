@@ -60,8 +60,8 @@
     margin:-12px -16px 10px;padding:12px 16px 10px;border-bottom:1px solid var(--line)}
   .topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
   .brand{line-height:1}
-  .brand .a{display:block;font-size:10px;letter-spacing:.18em;color:var(--faint);font-weight:800;text-transform:uppercase}
-  .brand .b{display:block;font-size:18px;letter-spacing:.06em;color:var(--blue);font-weight:900}
+  .brand .a{display:block;font-size:12px;letter-spacing:.16em;color:rgba(26,26,26,.7);font-weight:600;text-transform:none}
+  .brand .b{display:block;font-size:25px;letter-spacing:.04em;color:var(--blue);font-weight:900}
   .rightgrp{display:flex;align-items:center;gap:8px}
   .musicbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;color:var(--coral);transition:transform .15s,background .2s;flex-shrink:0;padding:0}
   .musicbtn:hover{transform:scale(1.06);background:var(--coral-soft)}
@@ -80,15 +80,15 @@
 
   /* ---- typography ---- */
   .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:800;text-align:center;margin:0 0 10px}
-  .display-brand{text-align:center;line-height:1;margin:2px 0 14px}
-  .display-brand .a{display:block;font-size:14px;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;font-weight:800}
-  .display-brand .b{display:block;font-size:clamp(36px,12vw,48px);letter-spacing:.04em;color:var(--blue);font-weight:900}
   p{margin:0 0 12px}
-  .lead{color:var(--ink-soft);text-align:center;font-size:17px;font-weight:600}
+  .lead{color:var(--ink);text-align:center;font-size:17px;font-weight:500;line-height:1.55}
   .center{text-align:center}
   .hl{color:var(--coral);font-weight:800}
   .hlv{color:var(--blue);font-weight:800}
-  .qtitle{font-size:clamp(22px,6vw,27px);line-height:1.25;text-align:center;margin:2px 0 16px;font-weight:800;letter-spacing:-.3px;text-wrap:balance;color:var(--ink)}
+  .qtitle{font-size:clamp(24px,6.5vw,30px);line-height:1.25;text-align:center;margin:2px 0 16px;font-weight:800;letter-spacing:-.3px;text-wrap:balance;color:var(--ink)}
+  /* bloco de destaque coral e pergunta de segmentação, no padrão do original */
+  .lead-hl{color:var(--coral);text-align:center;font-size:18.5px;font-weight:700;line-height:1.45;margin:0 0 14px}
+  .segq{color:var(--coral);text-align:center;font-size:20px;font-weight:700;margin:16px 0 10px}
   .sec-h{font-size:23px;text-align:center;margin:6px 0 6px;font-weight:900;letter-spacing:-.3px;color:var(--ink)}
 
   .guide{display:flex;align-items:center;gap:9px;justify-content:center;margin:0 auto 14px;width:fit-content;
@@ -450,12 +450,11 @@
   function intro(){
     app.innerHTML='<div class="view">'+
       '<p class="eyebrow">Teste de conhecimento · 2 minutos</p>'+
-      '<div class="display-brand"><span class="a">Mapas Mentais da</span><span class="b">Umbanda</span></div>'+
-      '<h2 class="qtitle" style="margin-bottom:10px">Você reconhece os fundamentos que <span class="hl">todo umbandista deveria conhecer</span>?</h2>'+
-      '<p class="lead">São <b>2 minutos</b>, 9 perguntas simples. No final, você descobre o seu nível real e o que ainda falta para entrar em qualquer gira com <b class="hl">segurança e confiança</b>.</p>'+
-      '<p class="lead">Cada resposta vale <b class="hlv">Saldo Espiritual</b> 💎. No final, além da <b class="hl">surpresa</b> que os seus pontos desbloqueiam, você verá como <b class="hl">aprender TUDO sobre a religião</b> com um app fácil, didático e prático.</p>'+
+      '<h2 class="qtitle" style="margin-bottom:14px">Você reconhece os fundamentos que <span class="hl">todo umbandista deveria conhecer</span>?</h2>'+
+      '<p class="lead-hl">No final, além da surpresa que os seus pontos desbloqueiam, você verá como aprender TUDO sobre a religião com um app fácil, didático e prático.</p>'+
+      '<p class="lead">São <b>2 minutos</b>, 9 perguntas simples. Você descobre o seu nível real e o que ainda falta para entrar em qualquer gira com segurança e confiança. Cada resposta vale <b class="hlv">Saldo Espiritual</b> 💎.</p>'+
       '<div class="warnbox"><b class="hl">⚠️ Atenção:</b> continue apenas se você tem interesse e respeito genuíno em aprender sobre a religião.</div>'+
-      '<p class="center" style="margin:16px 0 10px;font-size:19px;font-weight:800">Para começar: você é iniciante ou já é umbandista?</p>'+
+      '<p class="segq">Você é iniciante ou já é umbandista?</p>'+
       '<div class="opts grid2">'+
         '<button class="opt card" data-act="seg" data-v="iniciante">'+imgTag(IMG.iniciante,"oimg","Iniciante")+'<span>Sou Iniciante</span></button>'+
         '<button class="opt card" data-act="seg" data-v="umbandista">'+imgTag(IMG.umbandista,"oimg","Umbandista")+'<span>Já sou Umbandista</span></button>'+
