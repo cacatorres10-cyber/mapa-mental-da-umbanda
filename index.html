@@ -403,7 +403,6 @@
     if(musicOn){ bgm.pause(); musicOn=false; } else { bgm.play().then(function(){ musicOn=true; updateMusicIcon(); }).catch(function(){}); }
     updateMusicIcon();
   }); }
-  function playFx(){ try{ var fx=new Audio("https://quizsarava.lovable.app/audio/fireworks.mp3"); fx.volume=0.3; fx.play().catch(function(){}); }catch(e){} }
 
   function animateSaldo(to){
     saldoBox.style.visibility="visible";
@@ -563,7 +562,6 @@
       numEl.textContent=Math.round(target*p)+"%"; if(p<1)requestAnimationFrame(step); }
     requestAnimationFrame(step);
     setTimeout(function(){ numEl.textContent=target+"%"; ring.style.strokeDashoffset=(327-327*target/100); },1350);
-    playFx();
   }
 
   function analyzing(){
