@@ -98,12 +98,6 @@
   .guide .dot{width:7px;height:7px;border-radius:50%;background:var(--good);animation:pulse 1.4s infinite}
   @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 
-  /* ---- intro: o que te espera ---- */
-  .expect{list-style:none;padding:0;margin:16px auto;max-width:420px;display:flex;flex-direction:column;gap:9px}
-  .expect li{display:flex;gap:12px;align-items:flex-start;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:left}
-  .expect .ei{font-size:21px;line-height:1.15;flex-shrink:0}
-  .expect b{display:block;font-size:16px;color:var(--ink);font-weight:800;line-height:1.3}
-  .expect small{display:block;font-size:14px;color:var(--ink-soft);font-weight:600;margin-top:2px;line-height:1.4}
   .warnbox{background:var(--coral-soft);border:1px solid rgba(233,65,53,.25);border-radius:12px;padding:13px 15px;margin:14px 0;font-size:15px;color:var(--ink-soft);font-weight:600;text-align:center}
 
   /* ---- options ---- */
@@ -455,16 +449,11 @@
 
   function intro(){
     app.innerHTML='<div class="view">'+
-      '<p class="eyebrow">Teste de conhecimento · 9 perguntas · 2 minutos</p>'+
+      '<p class="eyebrow">Teste de conhecimento · 2 minutos</p>'+
       '<div class="display-brand"><span class="a">Mapas Mentais da</span><span class="b">Umbanda</span></div>'+
       '<h2 class="qtitle" style="margin-bottom:10px">Você reconhece os fundamentos que <span class="hl">todo umbandista deveria conhecer</span>?</h2>'+
-      '<p class="lead">Responda 9 perguntas simples e descubra o quanto você <b>realmente</b> sabe, e o que ainda falta para entrar em qualquer gira com <b class="hl">segurança e confiança</b>.</p>'+
-      '<ul class="expect">'+
-        '<li><span class="ei">💎</span><div><b>Cada resposta vale Saldo Espiritual</b><small>Seus pontos vão se acumulando até o final</small></div></li>'+
-        '<li><span class="ei">🕯️</span><div><b>No final, o seu diagnóstico personalizado</b><small>Descubra o seu perfil e o que ele revela sobre a sua caminhada</small></div></li>'+
-        '<li><span class="ei">🎁</span><div><b>E a surpresa que os seus pontos desbloqueiam</b><small>Só aparece para quem chega até o fim</small></div></li>'+
-      '</ul>'+
-      '<p class="lead" style="font-size:15.5px">No final, além da surpresa, você verá como <b class="hl">aprender TUDO sobre a religião</b> com um app fácil, didático e prático.</p>'+
+      '<p class="lead">São <b>2 minutos</b>, 9 perguntas simples. No final, você descobre o seu nível real e o que ainda falta para entrar em qualquer gira com <b class="hl">segurança e confiança</b>.</p>'+
+      '<p class="lead">Cada resposta vale <b class="hlv">Saldo Espiritual</b> 💎. No final, além da <b class="hl">surpresa</b> que os seus pontos desbloqueiam, você verá como <b class="hl">aprender TUDO sobre a religião</b> com um app fácil, didático e prático.</p>'+
       '<div class="warnbox"><b class="hl">⚠️ Atenção:</b> continue apenas se você tem interesse e respeito genuíno em aprender sobre a religião.</div>'+
       '<p class="center" style="margin:16px 0 10px;font-size:19px;font-weight:800">Para começar: você é iniciante ou já é umbandista?</p>'+
       '<div class="opts grid2">'+
