@@ -13,6 +13,7 @@
     CHECKOUT: "SEU_LINK_DE_AFILIADO",   // <-- seu link de checkout de afiliado
     FB_PIXEL_ID: "",                     // <-- seu Pixel do Facebook (deixe vazio p/ não carregar)
     CLARITY_ID: "",                      // <-- seu ID do Microsoft Clarity (opcional)
+    UTMIFY_PIXEL_ID: "",                 // <-- seu Pixel da UTMify (para rastrear as vendas)
 
     // DEPOIMENTOS: use SOMENTE depoimentos REAIS, com autorização da pessoa.
     // Enquanto a lista estiver vazia, o bloco de depoimentos não aparece na página.
@@ -25,6 +26,23 @@
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
     'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', id); fbq('track', 'PageView');
+  })();
+  // UTMify: rastreio de UTMs + pixel de vendas (só ativa quando você preenche o Pixel acima)
+  (function(){
+    var pid=window.QUIZ_CONFIG.UTMIFY_PIXEL_ID; if(!pid) return;
+    // 1) script de UTMs: leva a origem do clique (utm_source, campaign...) ate o checkout
+    var u=document.createElement("script");
+    u.src="https://cdn.utmify.com.br/scripts/utms/latest.js";
+    u.setAttribute("data-utmify-prevent-xcod-sck","");
+    u.setAttribute("data-utmify-prevent-subids","");
+    u.async=true; u.defer=true;
+    document.head.appendChild(u);
+    // 2) pixel da UTMify: registra visitas e conversoes
+    window.pixelId=pid;
+    var p=document.createElement("script");
+    p.async=true; p.defer=true;
+    p.src="https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+    document.head.appendChild(p);
   })();
 </script>
 
