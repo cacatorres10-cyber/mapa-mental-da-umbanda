@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferta única · Kit Prático da Fé</title>
+<script>
+  // ===== CONFIGURE AQUI =====
+  window.OTO = {
+    ACEITAR: "SEU_LINK_DE_CHECKOUT_UPSELL_2",  // link que cobra o upsell (1 clique)
+    RECUSAR: "SEU_LINK_OBRIGADO"               // p/ onde vai quem recusa (página de obrigado / área de membros)
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#161421; --ink-soft:#55555f; --faint:#9099a6;
+    --line:#e9ecf1; --line2:#dbe0e8; --surface2:#f6f8fb;
+    --blue:#07b0ed; --blue-d:#0592c4;
+    --coral:#e94135; --coral-d:#d12a1f; --coral-soft:rgba(233,65,53,.09);
+    --gold:#c69433;
+    --good:#1f9d63; --good-bg:#e8f6ef; --good-line:rgba(31,157,99,.3);
+    --shadow:0 16px 40px -20px rgba(20,30,60,.28);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(900px 460px at 50% -8%, rgba(233,65,53,.08), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"Nunito",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased; font-size:17px; min-height:100vh;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:16px 18px 48px}
+  .confirm{display:flex;align-items:center;gap:10px;justify-content:center;background:var(--good-bg);border:1px solid var(--good-line);
+    border-radius:12px;padding:11px 14px;margin:6px 0 18px;font-size:14.5px;font-weight:800;color:var(--good)}
+  .eyebrow{text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:800;margin:0 0 10px}
+  h1{font-size:clamp(26px,6.5vw,34px);line-height:1.15;text-align:center;font-weight:900;letter-spacing:-.4px;margin:0 0 12px;text-wrap:balance}
+  h1 .hl{color:var(--coral)} h1 .hlv{color:var(--blue)}
+  .lead{text-align:center;color:var(--ink-soft);font-weight:600;font-size:17px;margin:0 0 8px}
+  .hero-ic{width:96px;height:96px;margin:14px auto 6px;border-radius:24px;background:linear-gradient(135deg,#2f7d4f,#54b07a);
+    display:flex;align-items:center;justify-content:center;font-size:46px;box-shadow:0 16px 30px -12px rgba(47,125,79,.55)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:var(--shadow)}
+  ul.benef{list-style:none;padding:0;margin:6px 0}
+  ul.benef li{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:15.5px}
+  ul.benef li:last-child{border-bottom:none}
+  ul.benef li .ck{color:var(--good);font-weight:900;flex-shrink:0}
+  ul.benef li small{display:block;color:var(--faint);font-weight:600;font-size:13.5px;margin-top:1px}
+  .timer{display:flex;align-items:center;justify-content:center;gap:9px;margin:14px 0 4px;font-size:14px;color:var(--ink-soft);font-weight:700}
+  .timer .clock{font-variant-numeric:tabular-nums;font-size:22px;color:var(--coral);font-weight:900}
+  .price{text-align:center;margin:8px 0 4px}
+  .price .from{color:var(--faint);text-decoration:line-through;font-size:17px;font-weight:700}
+  .price .now{font-size:40px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1.1}
+  .price .now small{font-size:16px;font-weight:800;color:var(--ink-soft)}
+  .price .note{font-size:13px;color:var(--faint);font-weight:700;margin-top:2px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;cursor:pointer;border:none;border-radius:14px;
+    padding:18px 20px;font-size:18px;font-weight:900;font-family:inherit;text-decoration:none;text-align:center;line-height:1.2;
+    background:var(--coral);color:#fff;box-shadow:0 14px 28px -12px rgba(233,65,53,.7);transition:transform .15s,background .2s;
+    animation:pulse 2.4s ease-in-out infinite}
+  .btn:hover{transform:translateY(-2px);background:var(--coral-d)}
+  @keyframes pulse{0%,100%{transform:none}50%{transform:scale(1.02)}}
+  .subyes{text-align:center;font-size:12.5px;color:var(--faint);font-weight:700;margin:8px 0 0}
+  .decline{display:block;text-align:center;margin:18px auto 0;color:var(--faint);font-size:14px;font-weight:700;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit;width:100%}
+  .decline:hover{color:var(--ink-soft)}
+  .guar{display:flex;gap:12px;align-items:center;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin:16px 0 0}
+  .guar .seal{width:44px;height:44px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid var(--good);font-size:22px}
+  .guar p{margin:0;font-size:13px;color:var(--ink-soft);font-weight:600}
+  .guar b{color:var(--good)}
+  .steps{text-align:center;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:800;margin:0 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="steps">Passo 3 de 3 · Última oferta</p>
+  <div class="confirm"><span>✅</span> Tudo certo com o seu pedido!</div>
+
+  <p class="eyebrow">Última oferta · aparece uma só vez</p>
+  <h1>Agora que você vai <span class="hlv">entender</span>, que tal <span class="hl">colocar em prática</span>?</h1>
+  <p class="lead">Adicione o <b class="hl">Kit Prático da Fé</b>: receitas prontas de banhos, defumações e oferendas, Orixá por Orixá. O que usar, quando e como, sem medo de errar.</p>
+
+  <div class="hero-ic">🌿</div>
+
+  <div class="card">
+    <ul class="benef">
+      <li><span class="ck">✓</span><div><b>Banhos por objetivo</b><small>Descarrego, prosperidade, proteção, abertura de caminhos, passo a passo</small></div></li>
+      <li><span class="ck">✓</span><div><b>Defumação certa</b><small>Quais ervas e resinas usar em cada situação, e como fazer com segurança</small></div></li>
+      <li><span class="ck">✓</span><div><b>Oferendas por Orixá</b><small>O que agrada cada Orixá, onde entregar e o jeito respeitoso de fazer</small></div></li>
+      <li><span class="ck">✓</span><div><b>Direto ao ponto</b><small>Receitas prontas para usar hoje, sem precisar garimpar em dezenas de fontes</small></div></li>
+    </ul>
+
+    <div class="timer"><span>⏳ Esta condição sai em</span><span class="clock" id="clock">10:00</span></div>
+    <div class="price">
+      <div class="from">De R$67</div>
+      <div class="now">R$19<small>,00</small></div>
+      <div class="note">Pagamento único · adicionado ao seu pedido agora</div>
+    </div>
+
+    <a class="btn" id="aceitar" href="#">SIM! Quero o Kit Prático por R$19 →</a>
+    <p class="subyes">🔒 Compra segura · adicionado com 1 clique, sem digitar de novo</p>
+
+    <div class="guar"><div class="seal">🛡️</div><p><b>Risco zero:</b> a mesma garantia de 60 dias vale para o Kit. Se não te servir, é só pedir o reembolso.</p></div>
+  </div>
+
+  <button class="decline" id="recusar">Não, obrigado. Quero acessar apenas o que já comprei.</button>
+</div>
+
+<script>
+(function(){
+  var OTO=window.OTO||{};
+  var a=document.getElementById("aceitar");
+  a.href=OTO.ACEITAR||"#";
+  a.addEventListener("click",function(e){ if(!OTO.ACEITAR||OTO.ACEITAR==="SEU_LINK_DE_CHECKOUT_UPSELL_2"){ e.preventDefault(); alert("⚙️ Configure OTO.ACEITAR (link de checkout do upsell) no topo do arquivo."); }});
+  document.getElementById("recusar").addEventListener("click",function(){
+    if(OTO.RECUSAR && OTO.RECUSAR!=="SEU_LINK_OBRIGADO"){ window.location.href=OTO.RECUSAR; }
+    else{ alert("⚙️ Configure OTO.RECUSAR (para onde vai quem recusa) no topo do arquivo."); }
+  });
+  var end=Date.now()+10*60*1000, el=document.getElementById("clock");
+  var iv=setInterval(function(){
+    var left=Math.max(0,Math.floor((end-Date.now())/1000));
+    el.textContent=(left<600?"0":"")+Math.floor(left/60)+":"+(left%60<10?"0":"")+(left%60);
+    if(left<=0)clearInterval(iv);
+  },1000);
+})();
+</script>
+</body>
+</html>
