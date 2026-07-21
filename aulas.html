@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trilha de Aulas · Umbanda do Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#161421; --ink-soft:#55555f; --faint:#9099a6;
+    --line:#e9ecf1; --line2:#dbe0e8; --surface2:#f6f8fb;
+    --blue:#07b0ed; --blue-d:#0592c4; --blue-soft:rgba(7,176,237,.10);
+    --coral:#e94135; --coral-d:#d12a1f; --coral-soft:rgba(233,65,53,.09);
+    --good:#1f9d63; --good-bg:#e8f6ef;
+    --shadow:0 16px 40px -20px rgba(20,30,60,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(1000px 480px at 50% -8%, rgba(7,176,237,.09), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"Nunito",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased; font-size:17px; min-height:100vh;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .top-in{max-width:1000px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--blue),#4ad0ff);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .brand b{font-size:15px;font-weight:900;color:var(--ink);line-height:1.1;display:block}
+  .brand small{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:800}
+  .memtag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-d);font-weight:800;border:1px solid var(--line2);border-radius:999px;padding:6px 13px;background:var(--blue-soft)}
+
+  .hero{text-align:center;padding:34px 0 8px}
+  .hero .eye{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:800;margin-bottom:10px}
+  .hero h1{font-size:clamp(27px,5.5vw,38px);font-weight:900;letter-spacing:-.5px;margin:0 0 10px;line-height:1.12;text-wrap:balance}
+  .hero h1 span{color:var(--blue)}
+  .hero p{max-width:560px;margin:0 auto;color:var(--ink-soft);font-weight:600;font-size:16.5px}
+
+  .progress{max-width:560px;margin:18px auto 4px}
+  .progress .lbl{display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:var(--ink-soft);margin-bottom:6px}
+  .progress .lbl b{color:var(--good)}
+  .bar{height:9px;background:var(--surface2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--good),#59c98d);transition:width .4s}
+
+  .layout{display:grid;grid-template-columns:1.6fr 1fr;gap:22px;margin:24px 0 10px;align-items:start}
+  .player{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);position:sticky;top:74px}
+  .player .frame{position:relative;aspect-ratio:16/9;background:#000}
+  .player .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .player .pbar{background:#fff;padding:14px 16px;border-top:1px solid var(--line)}
+  .player .pbar .cur{font-size:12px;font-weight:800;color:var(--coral);letter-spacing:.04em;text-transform:uppercase}
+  .player .pbar h2{font-size:19px;font-weight:900;margin:3px 0 4px;color:var(--ink);line-height:1.2}
+  .player .pbar p{margin:0 0 12px;font-size:14px;color:var(--ink-soft);font-weight:600}
+  .player .pbar .row{display:flex;gap:9px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;border:none;border-radius:11px;padding:11px 16px;font-size:14px;font-weight:800;font-family:inherit;text-decoration:none;transition:transform .15s,background .2s,border-color .2s,color .2s}
+  .btn-primary{background:var(--coral);color:#fff}
+  .btn-primary:hover{transform:translateY(-1px);background:var(--coral-d)}
+  .btn-ghost{background:#fff;border:1.5px solid var(--line2);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue-d)}
+  .btn-done{background:var(--good-bg);border:1.5px solid rgba(31,157,99,.35);color:var(--good)}
+
+  .list{display:flex;flex-direction:column;gap:10px}
+  .list .lh{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:800;margin:2px 2px 2px}
+  .lesson{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;cursor:pointer;transition:border-color .2s,transform .12s,box-shadow .2s}
+  .lesson:hover{border-color:var(--blue);transform:translateY(-1px);box-shadow:var(--shadow)}
+  .lesson.active{border-color:var(--coral);background:var(--coral-soft)}
+  .lesson .num{width:32px;height:32px;flex-shrink:0;border-radius:9px;background:var(--surface2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:var(--ink-soft)}
+  .lesson.active .num{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .lesson.watched .num{background:var(--good);color:#fff;border-color:var(--good)}
+  .lesson .tx{flex:1;min-width:0}
+  .lesson .tx b{display:block;font-size:14.5px;font-weight:800;color:var(--ink);line-height:1.25}
+  .lesson .tx small{display:block;font-size:12.5px;color:var(--faint);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lesson .st{flex-shrink:0;color:var(--faint);font-size:16px}
+  .lesson.watched .st{color:var(--good)}
+
+  footer{margin:34px 0 30px;text-align:center;color:var(--faint);font-size:12.5px;font-weight:600;line-height:1.7}
+  footer a{color:var(--blue-d)}
+  .dev{max-width:820px;margin:14px auto 0;font-size:11.5px;color:var(--faint);opacity:.8;text-align:center}
+
+  @media (max-width:820px){
+    .layout{grid-template-columns:1fr}
+    .player{position:static}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><div class="mark">🔮</div><div><b>Mapa Mental da Umbanda</b><small>Trilha de Aulas</small></div></div>
+    <div class="memtag">Bônus · Aulas em vídeo</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <p class="eye">Combo de aulas · assista na ordem</p>
+    <h1>Umbanda do Zero, uma aula <span>puxa a outra</span></h1>
+    <p>Uma trilha em sequência para você entender os fundamentos assistindo. Comece pela Aula 1 e siga a ordem, cada uma prepara a próxima.</p>
+    <div class="progress">
+      <div class="lbl"><span>Seu progresso</span><span><b id="pdone">0</b> de <span id="ptotal">7</span> aulas</span></div>
+      <div class="bar"><i id="pbar"></i></div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <div class="player">
+      <div class="frame"><iframe id="frame" src="" title="Aula" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <div class="pbar">
+        <div class="cur" id="curLabel">Aula 1 de 7</div>
+        <h2 id="curTitle">—</h2>
+        <p id="curDesc">—</p>
+        <div class="row">
+          <button class="btn btn-ghost" id="prev">← Anterior</button>
+          <button class="btn btn-done" id="mark">✓ Marcar como assistida</button>
+          <button class="btn btn-primary" id="next">Próxima aula →</button>
+          <a class="btn btn-ghost" id="yt" href="#" target="_blank" rel="noopener">Abrir no YouTube ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" id="list">
+      <div class="lh">As 7 aulas, em ordem</div>
+    </div>
+  </div>
+
+  <footer>
+    Aulas gratuitas disponíveis publicamente no YouTube, todos os créditos aos canais criadores.<br>
+    Selecione uma aula para assistir aqui mesmo. Estude com respeito e fé 🕯️
+  </footer>
+  <p class="dev">⚙️ Antes de publicar: revise cada aula (conteúdo e se permite incorporação). Para trocar/adicionar, edite o array <b>AULAS</b> no final do arquivo (basta o id do vídeo do YouTube).</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var AULAS=[
+    {id:"eg852OjhG7s", t:"O que é a Umbanda", d:"Comece do começo: o que é a religião, como funciona um terreiro e uma gira.", c:"Umbanda para Iniciantes"},
+    {id:"LaY47zURxgg", t:"Orixás, Entidades e Anjo da Guarda", d:"A diferença entre os Orixás, as entidades e o seu anjo da guarda.", c:"Umbanda para Iniciantes"},
+    {id:"bZBPjrlD5XE", t:"Os Exus de Umbanda", d:"A linha da esquerda: quem são os Exus e como eles trabalham na caridade.", c:"Umbanda para Iniciantes"},
+    {id:"3kpEhVnYumA", t:"A Incorporação", d:"5 coisas que você não sabia sobre a incorporação na Umbanda.", c:"Umbanda para Iniciantes"},
+    {id:"GO2MM71Wf50", t:"Os Pontos Riscados", d:"O que são, o significado e como interpretar os pontos riscados das entidades.", c:"Pontos Riscados na Umbanda"},
+    {id:"-kA69tPIx1g", t:"Ervas e Banhos", d:"As principais ervas para banhos e como usar a força das plantas.", c:"Ervas na Umbanda"},
+    {id:"PPrg5fn-MxA", t:"A Defumação", d:"Como fazer a defumação com ervas para limpeza e proteção do seu espaço.", c:"Defumação com ervas"}
+  ];
+  var KEY="trilha_umbanda_watched";
+  var watched=[];
+  try{ watched=JSON.parse(localStorage.getItem(KEY))||[]; }catch(e){ watched=[]; }
+  var cur=0;
+
+  var frame=document.getElementById("frame");
+  var listEl=document.getElementById("list");
+  var curLabel=document.getElementById("curLabel");
+  var curTitle=document.getElementById("curTitle");
+  var curDesc=document.getElementById("curDesc");
+  var ytLink=document.getElementById("yt");
+  var markBtn=document.getElementById("mark");
+  document.getElementById("ptotal").textContent=AULAS.length;
+
+  function saveWatched(){ try{ localStorage.setItem(KEY, JSON.stringify(watched)); }catch(e){} }
+  function isWatched(i){ return watched.indexOf(i)>-1; }
+  function updateProgress(){
+    var n=watched.length;
+    document.getElementById("pdone").textContent=n;
+    document.getElementById("pbar").style.width=(n/AULAS.length*100)+"%";
+  }
+  function renderList(){
+    listEl.querySelectorAll(".lesson").forEach(function(x){x.remove();});
+    AULAS.forEach(function(a,i){
+      var el=document.createElement("div");
+      el.className="lesson"+(i===cur?" active":"")+(isWatched(i)?" watched":"");
+      el.setAttribute("data-i",i);
+      el.innerHTML='<div class="num">'+(isWatched(i)?"✓":(i+1))+'</div>'+
+        '<div class="tx"><b>'+a.t+'</b><small>Aula '+(i+1)+' · '+a.c+'</small></div>'+
+        '<div class="st">'+(i===cur?"▶":(isWatched(i)?"✓":""))+'</div>';
+      listEl.appendChild(el);
+    });
+  }
+  function load(i, autoplay){
+    cur=Math.max(0,Math.min(AULAS.length-1,i));
+    var a=AULAS[cur];
+    frame.src="https://www.youtube.com/embed/"+a.id+"?rel=0&modestbranding=1"+(autoplay?"&autoplay=1":"");
+    curLabel.textContent="Aula "+(cur+1)+" de "+AULAS.length;
+    curTitle.textContent=a.t;
+    curDesc.textContent=a.d;
+    ytLink.href="https://www.youtube.com/watch?v="+a.id;
+    markBtn.innerHTML=isWatched(cur)?"✓ Aula assistida":"✓ Marcar como assistida";
+    renderList();
+  }
+
+  listEl.addEventListener("click",function(e){
+    var l=e.target.closest(".lesson"); if(!l) return;
+    load(parseInt(l.getAttribute("data-i"),10), true);
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+  document.getElementById("prev").addEventListener("click",function(){ load(cur-1,true); window.scrollTo({top:0,behavior:"smooth"}); });
+  document.getElementById("next").addEventListener("click",function(){
+    if(!isWatched(cur)){ watched.push(cur); saveWatched(); updateProgress(); } // marca a atual ao avançar
+    load(cur+1,true); window.scrollTo({top:0,behavior:"smooth"});
+  });
+  markBtn.addEventListener("click",function(){
+    var ix=watched.indexOf(cur);
+    if(ix>-1){ watched.splice(ix,1); } else { watched.push(cur); }
+    saveWatched(); updateProgress(); load(cur,false);
+  });
+
+  updateProgress();
+  load(0,false);
+})();
+</script>
+</body>
+</html>
