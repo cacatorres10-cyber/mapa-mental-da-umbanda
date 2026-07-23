@@ -698,11 +698,14 @@
   }
 
   app.addEventListener("click",function(e){
-    startMusic();
     var fac=e.target.closest(".vfacade");
-    if(fac){ var box=fac.closest(".videobox"); var id=fac.getAttribute("data-vid");
-      box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-      return; }
+    if(fac){
+      if(bgm){ bgm.pause(); musicOn=false; updateMusicIcon(); } // pausa a musica de fundo p/ o video ter o som limpo
+      var box=fac.closest(".videobox"); var id=fac.getAttribute("data-vid");
+      box.innerHTML='<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0&badge=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      return;
+    }
+    startMusic();
     var t=e.target.closest("[data-act]"); if(!t)return;
     var act=t.getAttribute("data-act");
     if(act==="seg"){ state.seg=t.getAttribute("data-v"); animateSaldo(state.points+20); setTimeout(function(){go(1);},200); }
