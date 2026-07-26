@@ -416,15 +416,23 @@
   // ---- música de fundo ----
   var bgm=document.getElementById("bgm");
   var musicBtn=document.getElementById("musicBtn");
-  var musicOn=false;
-  if(bgm){ bgm.volume=0.20; }
+  var musicOn=true;              // ligada por padrao (a pessoa desliga no botao se quiser)
+  if(bgm){ bgm.volume=0.15; }    // volume baixo, de fundo
   function updateMusicIcon(){ if(musicBtn) musicBtn.textContent = musicOn ? "🔊" : "🔈"; }
-  function startMusic(){ if(!bgm||musicOn) return; bgm.play().then(function(){ musicOn=true; updateMusicIcon(); }).catch(function(){}); }
+  function tryStart(){ if(bgm && musicOn && bgm.paused){ bgm.play().catch(function(){}); } }
+  function startMusic(){ tryStart(); } // usado tambem no handler de clique do quiz
+  if(bgm){ tryStart(); }         // tenta tocar de imediato (navegador costuma bloquear ate a 1a interacao)
+  // 1o toque/rolagem/tecla em qualquer lugar libera o audio
+  document.addEventListener("pointerdown", tryStart, {passive:true});
+  document.addEventListener("touchstart", tryStart, {passive:true});
+  document.addEventListener("keydown", tryStart);
   if(musicBtn){ musicBtn.addEventListener("click", function(e){ e.stopPropagation();
     if(!bgm) return;
-    if(musicOn){ bgm.pause(); musicOn=false; } else { bgm.play().then(function(){ musicOn=true; updateMusicIcon(); }).catch(function(){}); }
+    musicOn=!musicOn;
+    if(musicOn){ bgm.play().catch(function(){}); } else { bgm.pause(); }
     updateMusicIcon();
   }); }
+  updateMusicIcon();
 
   function animateSaldo(to){
     saldoBox.style.visibility="visible";
