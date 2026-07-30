@@ -247,6 +247,10 @@
   .plan-reforco b{color:var(--coral-d)}
   .plan-reforco.soft{color:var(--ink-soft);font-weight:700}
   .plan-sub{text-align:center;font-size:14px;color:var(--ink-soft);font-weight:700;margin:-4px 0 8px}
+  .plan-scroll{text-align:center;font-size:14px;font-weight:800;color:var(--ink-soft);margin:-2px 0 -2px;padding:0 8px;line-height:1.5}
+  .plan-scroll b{color:var(--coral-d)}
+  .plan-scroll .arw{display:inline-block;animation:arwbob 1.3s ease-in-out infinite}
+  @keyframes arwbob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
   .plan-sub b{color:var(--ink)}
   .cmp{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
   .cmp th,.cmp td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line)}
@@ -749,6 +753,7 @@
           '<p class="plan-reforco">Você aprende <b>vendo como se faz</b>, não só lendo. É o que acelera de verdade.</p>'+
           '<a class="btn btn-gold pulse-cta" href="'+CHECKOUT_COMPLETO+'" data-act="buy" target="_blank" rel="noopener">Quero a Formação Completa <span aria-hidden="true">🔒</span></a>'+
         '</div>'+
+        '<p class="plan-scroll">Prefere começar mais simples? Role um pouco para baixo <span class="arw">👇</span> e veja o <b>Plano Essencial (R$19,90)</b>.</p>'+
         // ---- Plano Essencial (o preço que a pessoa esperava: R$19,90) ----
         '<div class="plan">'+
           '<div class="plan-name">Plano Essencial</div>'+
