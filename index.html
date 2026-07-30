@@ -10,7 +10,8 @@
      ==================================================================== -->
 <script>
   window.QUIZ_CONFIG = {
-    CHECKOUT: "https://pay.cakto.com.br/39k4ooc_997119",   // <-- seu link de checkout
+    CHECKOUT: "https://pay.cakto.com.br/39k4ooc_997119",   // <-- Plano Essencial (R$19,90)
+    CHECKOUT_COMPLETO: "https://pay.cakto.com.br/q62t8pb_1010646",  // <-- Formação Completa (R$37)
     FB_PIXEL_ID: "",                     // <-- seu Pixel do Facebook (deixe vazio p/ não carregar)
     CLARITY_ID: "",                      // <-- seu ID do Microsoft Clarity (opcional)
     // UTMify: os scripts oficiais ficam logo abaixo deste bloco (Pixel + captura de UTMs)
@@ -222,6 +223,39 @@
   .redeem .rt{font-size:15px;color:var(--ink-soft);font-weight:700}
   .redeem b{color:var(--purple-ink)}
 
+  /* ---- planos (tiers) ---- */
+  .plans-title{text-align:center;font-weight:900;font-size:19px;color:var(--ink);margin:16px 0 4px}
+  .plans{display:flex;flex-direction:column;gap:16px;margin:12px 0 6px}
+  .plan{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 18px 20px;box-shadow:var(--shadow-sm);position:relative}
+  .plan.reco{border:2.5px solid var(--coral);box-shadow:0 18px 44px -18px rgba(233,65,53,.4)}
+  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-weight:900;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:5px 15px;border-radius:999px;white-space:nowrap}
+  .plan-name{font-weight:900;font-size:18px;color:var(--ink);letter-spacing:-.2px;text-align:center;margin:2px 0 8px}
+  .plan-name.reco{color:var(--coral-d)}
+  .plan-price{display:flex;align-items:baseline;gap:8px;justify-content:center;margin:2px 0 2px}
+  .plan-price .from{color:var(--faint);text-decoration:line-through;font-size:15px;font-weight:700}
+  .plan-price .now{font-size:36px;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1}
+  .plan-price .now small{font-size:15px;font-weight:800;color:var(--ink-soft)}
+  .plan-feat{list-style:none;padding:0;margin:12px 0 14px;text-align:left}
+  .plan-feat li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;font-weight:700;color:var(--ink);padding:5px 0}
+  .plan-feat li .ck{color:var(--good);font-weight:900;flex-shrink:0;line-height:1.4}
+  .plan-feat li span:not(.ck){flex:1;min-width:0}
+  .plan-feat li b{color:var(--coral-d)}
+  .plan-mais{text-align:center;font-size:14px;font-weight:800;color:var(--good);background:var(--good-bg);border:1px solid var(--good-line);border-radius:10px;padding:8px 10px;margin:4px 0 12px}
+  .plan-mais b{color:#177a4b}
+  .plan-reforco{text-align:center;font-size:13.5px;color:var(--coral-d);font-weight:800;margin:0 0 12px}
+  .plan-reforco b{color:var(--coral-d)}
+  .plan-reforco.soft{color:var(--ink-soft);font-weight:700}
+  .plan-sub{text-align:center;font-size:14px;color:var(--ink-soft);font-weight:700;margin:-4px 0 8px}
+  .plan-sub b{color:var(--ink)}
+  .cmp{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .cmp th,.cmp td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line)}
+  .cmp thead th{font-weight:900;color:var(--ink);background:var(--surface2);font-size:13.5px}
+  .cmp tbody td:first-child,.cmp thead th:first-child{text-align:left;font-weight:700;color:var(--ink-soft)}
+  .cmp .cx{background:var(--coral-soft);color:var(--coral-d);font-weight:900}
+  .cmp tbody tr:last-child td{border-bottom:none}
+  .btn-plan2{background:#fff;border:2px solid var(--coral);color:var(--coral-d);box-shadow:none;animation:none}
+  .btn-plan2:hover{background:var(--coral-soft);transform:translateY(-2px)}
+
   .timer{display:flex;align-items:center;justify-content:center;gap:9px;margin:12px 0;font-size:15px;color:var(--ink-soft);font-weight:700}
   .timer .clock{font-variant-numeric:tabular-nums;font-size:24px;color:var(--coral);font-weight:900;letter-spacing:.04em}
 
@@ -254,7 +288,18 @@
     .opts.grid3{gap:7px}
     .opt.card{padding:10px 6px}
     .opt.card span{font-size:14.5px}
+    /* planos em telas pequenas */
+    .plan{padding:16px 13px 18px}
+    .plan-name{font-size:16px}
+    .plan-feat li{font-size:13.5px;gap:7px}
+    .plan-price .now{font-size:32px}
+    .plan-badge{font-size:10px;padding:5px 11px}
+    .plans-title{font-size:16.5px}
+    .btn{font-size:15.5px;padding:16px 12px}
+    .btn-plan2{font-size:14.5px}
   }
+  /* garante que nenhum texto vaze horizontalmente */
+  .plan-name,.plan-feat li,.plan-reforco,.btn{overflow-wrap:anywhere;word-break:break-word}
 </style>
 </head>
 <body>
@@ -289,6 +334,7 @@
   var BASE="https://quizsarava.lovable.app/assets/";
   function A(f){return BASE+f;}
   var CHECKOUT=CFG.CHECKOUT||"SEU_LINK_DE_AFILIADO";
+  var CHECKOUT_COMPLETO=CFG.CHECKOUT_COMPLETO||"SEU_LINK_COMPLETO";
 
   var IMG={
     iniciante:A("personagem-iniciante-novo-CPEGKlyv.png"),
@@ -487,9 +533,9 @@
   function intro(){
     app.innerHTML='<div class="view">'+
       '<p class="eyebrow">Teste de conhecimento · 2 minutos</p>'+
-      '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">2 minutos</span>, descubra quanto você realmente conhece sobre a Umbanda.</h2>'+
-      '<p class="lead" style="font-size:16px;margin-bottom:10px">Responda algumas perguntas rápidas e receba o seu resultado.</p>'+
-      '<p class="lead-hl">Se você <span class="mark">ficar até o final</span>, vai receber um <span class="mark">presente especial</span> para continuar aprendendo de forma simples e organizada.</p>'+
+      '<h2 class="qtitle" style="margin-bottom:12px">Em <span class="hl">apenas 2 minutos</span>, descubra seu nível de conhecimento sobre a Umbanda e o que falta para aprimorar a sua caminhada.</h2>'+
+      '<p class="lead" style="font-size:16px;margin-bottom:10px">Responda algumas perguntas rápidas e descubra seu nível de conhecimento.</p>'+
+      '<p class="lead-hl">Se você <span class="mark">ficar até o final</span>, você desbloqueia um <span class="mark">presente especial</span> para continuar aprendendo Umbanda de forma simples e organizada.</p>'+
       '<div class="warnbox"><b class="hl">⚠️ Atenção!</b> Continue apenas se seu objetivo é aprender sobre a Umbanda com respeito e interesse genuíno.</div>'+
       '<p class="segq">Você é iniciante ou já é umbandista?</p>'+
       '<div class="opts grid2">'+
@@ -660,8 +706,9 @@
       '</div>'+
       imgTag(IMG.b6mais,"mockup","Mais 6 bônus exclusivos")+
       proof("Quem já está estudando com o material")+
-      guideLine("Tudo isso junto por um valor que vai te surpreender...")+
-      '<button class="btn btn-gold pulse-cta" data-act="next">Quero o Combo Completo! <span aria-hidden="true">→</span></button>'+
+      '<p class="lead-hl" style="margin-top:8px">E tudo isso começa por apenas <span class="mark">R$19,90</span>.</p>'+
+      guideLine("Veja a sua oferta de hoje...")+
+      '<button class="btn btn-gold pulse-cta" data-act="next">Ver a minha oferta! <span aria-hidden="true">→</span></button>'+
       '</div>';
   }
 
@@ -682,13 +729,43 @@
         '<div class="totrow"><span class="tl">Valor real de tudo:</span><span class="tv">R$'+total+'</span></div>'+
         '<p class="stacknote">Você não paga nada perto disso hoje 👇</p>'+
       '</ul></div>'+
-      imgTag(IMG.preco,"price-img","De R$297 por apenas R$19,90")+
-      '<p class="center lead" style="font-size:15px;margin-top:2px">Pagamento único · Acesso vitalício · Sem mensalidade</p>'+
+      '<p class="plans-title">Escolha como você quer aprender</p>'+
+      '<p class="center lead" style="font-size:14px;margin:0 0 10px">São <b>2 planos</b> 👇 role para ver os dois e escolher o seu.</p>'+
+      '<div class="plans">'+
+        // ---- Formação Completa primeiro (destaque), enquadrada como "+R$17" ----
+        '<div class="plan reco">'+
+          '<span class="plan-badge">⭐ Mais escolhido</span>'+
+          '<div class="plan-name reco">Formação Completa</div>'+
+          '<p class="plan-sub">Para quem quer <b>realmente entender</b> a Umbanda.</p>'+
+          '<div class="plan-price"><span class="from">De R$297</span><span class="now">R$37<small>,00</small></span></div>'+
+          '<p class="plan-mais">🎉 Só <b>R$17 a mais</b> que o Essencial, e você leva tudo</p>'+
+          '<ul class="plan-feat">'+
+            '<li><span class="ck">✓</span><span><b>O App Mapa Mental + 3 bônus</b> (tudo do Essencial)</span></li>'+
+            '<li><span class="ck">✓</span><span><b>Todos os 10 bônus exclusivos</b></span></li>'+
+            '<li><span class="ck">✓</span><span><b>Trilha completa em vídeo</b> — 44 aulas em 7 módulos</span></li>'+
+            '<li><span class="ck">✓</span><span>Grupo fechado no WhatsApp</span></li>'+
+          '</ul>'+
+          '<p class="plan-reforco">Você aprende <b>vendo como se faz</b>, não só lendo. É o que acelera de verdade.</p>'+
+          '<a class="btn btn-gold pulse-cta" href="'+CHECKOUT_COMPLETO+'" data-act="buy" target="_blank" rel="noopener">Quero a Formação Completa <span aria-hidden="true">🔒</span></a>'+
+        '</div>'+
+        // ---- Plano Essencial (o preço que a pessoa esperava: R$19,90) ----
+        '<div class="plan">'+
+          '<div class="plan-name">Plano Essencial</div>'+
+          '<p class="plan-sub">Ideal para quem quer <b>começar</b>.</p>'+
+          '<div class="plan-price"><span class="from">De R$67</span><span class="now">R$19<small>,90</small></span></div>'+
+          '<ul class="plan-feat">'+
+            '<li><span class="ck">✓</span><span>Acesso ao App Mapa Mental</span></li>'+
+            '<li><span class="ck">✓</span><span>Formação Fundamental</span></li>'+
+            '<li><span class="ck">✓</span><span>Atlas das Ervas</span></li>'+
+            '<li><span class="ck">✓</span><span>Pontos Cantados</span></li>'+
+          '</ul>'+
+          '<p class="plan-reforco soft">Aprenda os fundamentos da Umbanda no seu ritmo.</p>'+
+          '<a class="btn btn-plan2" href="'+CHECKOUT+'" data-act="buy" target="_blank" rel="noopener">Quero o Essencial</a>'+
+        '</div>'+
+      '</div>'+
+      '<p class="center lead" style="font-size:14px;margin-top:12px">Pagamento único · Acesso vitalício · Sem mensalidade · Pix, cartão e boleto 🔒</p>'+
       '<div class="guarantee"><div class="seal">🛡️</div><div><div class="gt">60 dias de garantia incondicional</div><p>Estude com calma por 60 dias. Se não sentir evolução na sua fé, devolvemos 100% do valor, sem perguntas.</p></div></div>'+
       proof("O que dizem os alunos")+
-      '<p class="center lead" style="font-size:15.5px;margin:6px 0 2px">Dê hoje o passo para <b class="hl">servir na gira com segurança</b> e honrar os seus guias com o conhecimento que eles merecem.</p>'+
-      '<a class="btn btn-gold pulse-cta" href="'+CHECKOUT+'" data-act="buy" target="_blank" rel="noopener">Quero começar minha jornada por R$19,90 <span aria-hidden="true">🔒</span></a>'+
-      imgTag(IMG.secure,"secure-img","Ambiente 100% seguro, Pix, cartão e boleto")+
       '</div>';
     startClock();
   }
@@ -722,7 +799,7 @@
     else if(act==="ans"){ answer(parseInt(t.getAttribute("data-qi"),10),parseInt(t.getAttribute("data-oi"),10)); }
     else if(act==="next"){ go(1); }
     else if(act==="savename"){ var el=document.getElementById("nameInp"); if(el && !t.getAttribute("data-skip")){ state.name=(el.value||"").trim().replace(/[<>]/g,""); } go(1); }
-    else if(act==="buy"){ if(CHECKOUT==="SEU_LINK_DE_AFILIADO"){ e.preventDefault(); alert("⚙️ Configuração: preencha o seu link de afiliado em QUIZ_CONFIG.CHECKOUT no topo do arquivo."); } }
+    else if(act==="buy"){ var href=t.getAttribute("href")||""; if(/SEU_LINK/.test(href)){ e.preventDefault(); alert("⚙️ Configuração: preencha o link deste plano em QUIZ_CONFIG (CHECKOUT ou CHECKOUT_COMPLETO) no topo do arquivo."); } }
   });
   app.addEventListener("keydown",function(e){
     if(e.key==="Enter" && e.target.id==="nameInp"){ e.preventDefault(); state.name=(e.target.value||"").trim().replace(/[<>]/g,""); go(1); }
